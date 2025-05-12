@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="app-header">
+    <span>CRUD de Tareas</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/todos">
+      <mat-icon>list</mat-icon> Lista de Tareas
+    </button>
+    <button mat-button routerLink="/todos/new">
+      <mat-icon>add</mat-icon> Nueva Tarea
+    </button>
+    <button mat-icon-button (click)="resetData()" matTooltip="Restablecer datos">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-toolbar>

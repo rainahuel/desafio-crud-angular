@@ -1,0 +1,45 @@
+<div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Lista de Tareas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="loading" class="loading-spinner">
+          <p>Cargando...</p>
+        </div>
+  
+        <div *ngIf="!loading && todos.length === 0" class="empty-state">
+          <p>No hay tareas disponibles.</p>
+          <button mat-raised-button color="primary" routerLink="/todos/new">
+            Crear Nueva Tarea
+          </button>
+        </div>
+  
+        <mat-list *ngIf="!loading && todos.length > 0">
+          <mat-list-item *ngFor="let todo of todos" class="todo-item">
+            <div class="todo-content">
+              <mat-checkbox 
+                [checked]="todo.completed" 
+                (change)="toggleComplete(todo)"
+                color="primary">
+                <span [class.completed]="todo.completed">{{ todo.title }}</span>
+              </mat-checkbox>
+            </div>
+            <div class="todo-actions">
+              <button mat-icon-button color="primary" [routerLink]="['/todos/edit', todo.id]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" routerLink="/todos/new">
+          <mat-icon>add</mat-icon> Nueva Tarea
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
