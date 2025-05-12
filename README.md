@@ -1,27 +1,47 @@
-# AngularCrudApp
+CRUD App Angular con JSONPlaceholder API
+Este proyecto es una aplicación CRUD simple desarrollada con Angular 15 y Angular Material 
+que permite gestionar una lista de tareas.
+Características
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+Lista de tareas con estado de completado
+Crear nuevas tareas
+Editar tareas existentes
+Eliminar tareas
+Persistencia temporal usando localStorage
+Diseño responsive
 
-## Development server
+Tecnologías utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Angular 15
+Angular Material
+JSONPlaceholder API como fuente de datos inicial
+LocalStorage para persistencia de datos
 
-## Code scaffolding
+Cómo iniciar
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clona el repositorio
+Instala las dependencias: npm install
+Inicia el servidor de desarrollo: ng serve
+Navega a http://localhost:4200/
 
-## Build
+Estructura del proyecto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+src/app/models: Contiene la interfaz del modelo de datos
+src/app/services: Contiene el servicio para manejar las operaciones HTTP y localStorage
+src/app/components: Contiene los componentes de la aplicación
 
-## Running unit tests
+header: Barra de navegación superior
+footer: Pie de página
+todo-list: Lista de tareas
+todo-form: Formulario para crear/editar tareas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+API utilizada
+El proyecto utiliza la API JSONPlaceholder para cargar datos iniciales:
+JSONPlaceholder
+Notas adicionales
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+La aplicación guarda los cambios temporalmente en localStorage
+Al actualizar la página, los datos vuelven a su estado inicial desde la API
+El botón de restablecer datos en la barra de navegación permite recargar los datos desde la API
