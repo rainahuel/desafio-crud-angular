@@ -45,7 +45,6 @@ export class TodoListComponent implements OnInit {
         this.snackBar.open('Tarea actualizada', 'Cerrar', {
           duration: 2000
         });
-        // Actualizar la lista local para reflejar el cambio
         const index = this.todos.findIndex(t => t.id === todo.id);
         if (index !== -1) {
           this.todos[index] = updatedTodo;

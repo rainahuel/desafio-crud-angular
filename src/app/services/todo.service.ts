@@ -13,7 +13,6 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
-  // Obtener todos los todos
   getTodos(): Observable<Todo[]> {
     const storedTodos = this.getFromLocalStorage();
     
@@ -26,7 +25,6 @@ export class TodoService {
     }
   }
 
-  // Obtener un todo específico
   getTodo(id: number): Observable<Todo> {
     const storedTodos = this.getFromLocalStorage();
     const storedTodo = storedTodos.find(todo => todo.id === id);
@@ -38,7 +36,6 @@ export class TodoService {
     }
   }
 
-  // Agregar un nuevo todo
   addTodo(todo: Todo): Observable<Todo> {
     const storedTodos = this.getFromLocalStorage();
     const maxId = storedTodos.length > 0 ? Math.max(...storedTodos.map(t => t.id)) : 0;
@@ -50,7 +47,6 @@ export class TodoService {
     return of(newTodo);
   }
 
-  // Actualizar un todo existente
   updateTodo(todo: Todo): Observable<Todo> {
     const storedTodos = this.getFromLocalStorage();
     const index = storedTodos.findIndex(t => t.id === todo.id);
@@ -64,7 +60,6 @@ export class TodoService {
     }
   }
 
-  // Eliminar un todo
   deleteTodo(id: number): Observable<void> {
     const storedTodos = this.getFromLocalStorage();
     const filteredTodos = storedTodos.filter(todo => todo.id !== id);
@@ -72,7 +67,6 @@ export class TodoService {
     return of(void 0);
   }
 
-  // Métodos para manejar localStorage
   private getFromLocalStorage(): Todo[] {
     const todosString = localStorage.getItem(this.localStorageKey);
     return todosString ? JSON.parse(todosString) : [];
@@ -82,7 +76,7 @@ export class TodoService {
     localStorage.setItem(this.localStorageKey, JSON.stringify(todos));
   }
 
-  // Resetear los datos
+
   resetTodos(): Observable<Todo[]> {
     localStorage.removeItem(this.localStorageKey);
     return this.http.get<Todo[]>(`${this.apiUrl}?_limit=10`).pipe(
